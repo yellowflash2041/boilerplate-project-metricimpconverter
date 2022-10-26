@@ -39,6 +39,9 @@ function ConvertHandler() {
     for (let i = 0; i < unitBank.length; i++) {
       if (result === unitBank[i]) {
         checker = true;
+        if (result === 'l') {
+          result = 'L';
+        }
       }
     }
     if (!checker) {
@@ -58,7 +61,7 @@ function ConvertHandler() {
         result = 'mi';
         break;
       case 'gal':
-        result = 'l';
+        result = 'L';
         break;
       case 'l':
         result = 'gal';
@@ -130,6 +133,9 @@ function ConvertHandler() {
         break;
       default:
         result = 'ERROR';
+    }
+    if (result !== 'ERROR') {
+      result = (result * 100000).toFixed(0) / 100000;
     }
     return result;
   };
